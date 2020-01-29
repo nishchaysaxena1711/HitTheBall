@@ -11,10 +11,10 @@ const Board = styled.div`
 	}
 `;
 
-const ScoreCard = (props) => {
+const ScoreCard = props => {
     return (
         <Board>
-            <input type="text" disabled>{props.score}</input>
+            <div>{props.score}</div>
             <span>Score</span>
         </Board>
     )

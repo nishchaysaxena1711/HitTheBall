@@ -6,10 +6,9 @@ export const GameStore = {
 };
 
 export default handleActions({
-    UPDATE_COMPLEXITY_DETAILS: (state, {payload} ) => {
-        return [
-            ...state,
-            payload
-        ]
+    UPDATE_COMPLEXITY_DETAILS: (state, { payload } ) => {
+        return Object.assign({}, state, {
+            complexity: payload
+        });
     }
 }, GameStore);

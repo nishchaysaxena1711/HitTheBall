@@ -23,7 +23,7 @@ class Homepage extends Component {
 					? "Please select the complexity of game!" 
 					: "Test your skill how many circle you can hit?"} 
 				/>
-				{complexity === null ? <Dropdown/> : <Playboard grid={complexity} />}
+				{complexity === null ? <Dropdown/> : <Playboard />}
 			</Container>
 		);
 	}
