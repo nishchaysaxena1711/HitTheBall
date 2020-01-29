@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Board = styled.div`
+const Card = styled.div`
 	flex-direction: row-reverse;
     display: flex;
     padding: 5px 20px 5px;
@@ -13,10 +13,10 @@ const Board = styled.div`
 
 const ScoreCard = props => {
     return (
-        <Board>
+        <Card>
             <div>{props.score}</div>
             <span>Score</span>
-        </Board>
+        </Card>
     )
 }
 

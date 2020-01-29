@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -11,10 +11,48 @@ const Container = styled.div`
     margin: 15px;
 `;
 
-const Board = props => {
-    return (
-       <Container>Hello{props.gridSize}</Container>
-    )
+const Circle = styled.div`
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+`;
+
+class Board extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    getCircleGrid = () => {
+        const { gridSize } = this.props;
+        const array = Array.from(Array(parseInt(gridSize)).keys());
+        return (<div>
+            {
+                array.map((x) => {
+                    return (
+                        <div className="row">
+                            {
+                                array.map((y) => {
+                                    return <Circle key={Math.random} />
+                            })}
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )}
+
+    render() {
+        return (
+            <Container>
+                {
+                    this.getCircleGrid()
+                }
+            </Container>
+         );
+    }
 }
 
 export default Board;
