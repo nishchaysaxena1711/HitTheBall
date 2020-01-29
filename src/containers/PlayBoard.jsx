@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import ScoreCard from "../components/ScoreCard.jsx";
 import Board from "../components/Board.jsx";
 import { connect } from 'react-redux';
 
@@ -18,14 +17,42 @@ const ActionButton = styled.div`
 `;
 
 class PlayBoard extends Component {
+    constructor() {
+        super();
+        this.state={
+            gameState: ""
+        }
+    }
+
+
     render() {
         return (
             <div>
-                <ScoreCard score={this.props.score} />
-                <Board gridSize={this.props.complexity}/>
+                <Board 
+                    gridSize={this.props.complexity}
+                    gameState={this.state.gameState}
+                />
                 <ActionButton>
-                    <button id="play" onClick={(e) => console.log(e.target.id)}>Play</button>
-                    <button id="stop" onClick={(e) => console.log(e.target.id)}>Stop</button>
+                    <button 
+                        id="play" 
+                        onClick={(e) => {
+                            this.setState({
+                                gameState: e.target.id
+                            })
+                        }}
+                    >
+                        Play
+                    </button>
+                    <button 
+                        id="stop" 
+                        onClick={(e) => {
+                            this.setState({
+                                gameState: e.target.id
+                            })
+                        }}
+                    >
+                        Stop
+                    </button>
                 </ActionButton>
             </div>
         )
