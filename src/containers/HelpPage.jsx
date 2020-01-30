@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const HelpContainer = styled.div`
 	border: 1px solid #000;
@@ -8,12 +8,12 @@ const HelpContainer = styled.div`
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-`;
+`
 
 const HelpPage = () => (
 	<HelpContainer>
-		
-	</HelpContainer>
-);
 
-export default HelpPage;
+	</HelpContainer>
+)
+
+export default HelpPage

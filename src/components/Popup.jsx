@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { updateComplexityDetails } from "../actions/actions.js";
-import { connect } from 'react-redux';
+import React from 'react'
+import styled from 'styled-components'
+import { updateComplexityDetails } from '../actions/actions.js'
+import { connect } from 'react-redux'
 
 const PopUpContainer = styled.div`
     .popup {  
@@ -29,31 +29,31 @@ const PopUpContainer = styled.div`
         text-align: center;
         padding: 10px;
     }
-`;  
+`
 
-class Popup extends React.Component {  
-    constructor(props) {
-        super(props);
-    }
+class Popup extends React.Component {
+	constructor (props) {
+		super(props)
+	}
 
-    render() {
-        const {score} = this.props;
-        return (  
-            <PopUpContainer className='popup'>  
-                <div className='popup_inner'>  
-                    <h3>Your score is = {this.props.score}</h3>  
-                    <button 
-                        onClick={() => {
-                            this.props.dispatch(updateComplexityDetails(null))
-                            this.props.closePopup
-                        }}
-                    >
-                        Play Again
-                    </button>  
-                </div>  
-            </PopUpContainer>  
-        );  
-    }  
+	render () {
+		const { score } = this.props
+		return (
+			<PopUpContainer className='popup'>
+				<div className='popup_inner'>
+					<h3>Your score is = {this.props.score}</h3>
+					<button
+						onClick={() => {
+							this.props.dispatch(updateComplexityDetails(null))
+							this.props.closePopup
+						}}
+					>
+						Play Again
+					</button>
+				</div>
+			</PopUpContainer>
+		)
+	}
 }
 
-export default connect()(Popup);
+export default connect()(Popup)

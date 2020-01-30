@@ -1,6 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const Routes = styled.div`
 	display: flex;
@@ -14,13 +13,13 @@ const Routes = styled.div`
 			text-decoration: underline;
 		}
 	}
-`;
+`
 
 const Head = styled.header`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-`;
+`
 
 const Header = () => (
 	<Head>
@@ -30,6 +29,6 @@ const Header = () => (
 			<NavLink to="/help" activeClassName="is-active">Help</NavLink> */}
 		</Routes>
 	</Head>
-);
+)
 
-export default Header;
+export default Header

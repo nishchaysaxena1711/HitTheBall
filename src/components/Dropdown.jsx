@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { updateComplexityDetails } from "../actions/actions.js";
-import { ComplexityLevel } from "../constants/constant";
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { updateComplexityDetails } from '../actions/actions.js'
+import { ComplexityLevel } from '../constants/constant'
 
 const DropdownElement = styled.div`
     display: flex;
@@ -51,57 +51,57 @@ const DropdownElement = styled.div`
 		}
 	}
 
-`;
+`
 
 class Dropdown extends Component {
-    constructor() {
-		super();
+	constructor () {
+		super()
 		this.state = {
 			dropdownOpen: false
 		}
 	}
 
-    toggleList = () => {
+	toggleList = () => {
 		this.setState(prevState => ({
 			dropdownOpen: !prevState.dropdownOpen
 		}))
 	}
 
-    render() {
-        const { dropdownOpen } = this.state;
-        return (
-            <DropdownElement>
-                <div className="dropdown-wrapper">
-                    <div className="dropdown-header" onClick={() => this.toggleList()}>
-                    <div className="dropdown-header-title">Select level</div>
-                    {
-                        dropdownOpen 
-                        ? <i className="arrow up"></i>
-                        : <i className="arrow down"></i>
-                    }
-                </div>
-                {
-                    dropdownOpen && 
-                    <ul className="dropdown-list">
-                        {
-                            ComplexityLevel.map((level) => (
-                                <li className="dropdown-list-item" 
-                                    key={level.key}
-                                    id={level.grid}
-                                    onClick={(e) => {
-                                        this.props.dispatch(updateComplexityDetails(e.target.id))
-                                    }}
-                                >
-                                    {level.type}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                }
-                </div>
-            </DropdownElement>
-        )
-    }
+	render () {
+		const { dropdownOpen } = this.state
+		return (
+			<DropdownElement>
+				<div className="dropdown-wrapper">
+					<div className="dropdown-header" onClick={() => this.toggleList()}>
+						<div className="dropdown-header-title">Select level</div>
+						{
+							dropdownOpen
+								? <i className="arrow up"></i>
+								: <i className="arrow down"></i>
+						}
+					</div>
+					{
+						dropdownOpen &&
+						<ul className="dropdown-list">
+							{
+								ComplexityLevel.map((level) => (
+									<li className="dropdown-list-item"
+										key={level.key}
+										id={level.grid}
+										onClick={(e) => {
+											this.props.dispatch(updateComplexityDetails(e.target.id))
+										}}
+									>
+										{level.type}
+									</li>
+								))
+							}
+						</ul>
+					}
+				</div>
+			</DropdownElement>
+		)
+	}
 }
 
-export default connect()(Dropdown);
+export default connect()(Dropdown)
