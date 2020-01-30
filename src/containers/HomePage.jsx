@@ -21,7 +21,7 @@ class Homepage extends Component {
 			<Container>
 				<Heading text={complexity === null
 					? 'Please select the complexity of game!'
-					: 'Test your skill how many circle you can hit?'}
+					: 'Test your skill how many circles you can hit?'}
 				/>
 				{complexity === null ? <Dropdown/> : <Playboard/>}
 			</Container>

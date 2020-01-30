@@ -65,13 +65,14 @@ class Board extends Component {
 														this.setState({
 															activeCircle: Math.floor((Math.random() * (gridSize * gridSize)) + 1),
 															score: score + 1
-														})
+														});
+														dispatch(updateScoreDetails(score+1));
 													} else {
 														this.setState({
 															score: score - 1
-														})
+														});
+														dispatch(updateScoreDetails(score-1));
 													}
-													dispatch(updateScoreDetails(score))
 												}
 											}}
 										/>
