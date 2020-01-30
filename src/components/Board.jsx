@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ScoreCard from "../components/ScoreCard.jsx";
+import { updateScoreDetails } from "../actions/actions.js";
+import { connect } from 'react-redux';
 
 const Container = styled.div`
     align-items: center;
@@ -38,7 +40,7 @@ class Board extends Component {
     }
 
     getCircleGrid = () => {
-        const { gridSize, gameState } = this.props;
+        const { gridSize, gameState, dispatch } = this.props;
         const { activeCircle, score } = this.state;
         const array = Array.from(Array(parseInt(gridSize)).keys());
         let i = 0;
@@ -63,12 +65,13 @@ class Board extends Component {
                                                         this.setState({
                                                             activeCircle: Math.floor((Math.random() * (gridSize * gridSize)) + 1),
                                                             score: score + 1
-                                                        })
+                                                        });
                                                     } else {
                                                         this.setState({
                                                             score: score - 1
-                                                        })
+                                                        });
                                                     }
+                                                    dispatch(updateScoreDetails(score));
                                                 }
                                             }}
                                         />
@@ -95,4 +98,4 @@ class Board extends Component {
     }
 }
 
-export default Board;
+export default connect()(Board);

@@ -10,5 +10,10 @@ export default handleActions({
         return Object.assign({}, state, {
             complexity: payload
         });
+    },
+    UPDATE_SCORE_DETAILS: (state, { payload } ) => {
+        return Object.assign({}, state, {
+            score: payload
+        });
     }
 }, GameStore);

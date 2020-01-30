@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Board from "../components/Board.jsx";
+import Popup from "../components/Popup.jsx";
 import { connect } from 'react-redux';
 
 const ActionButton = styled.div`
@@ -17,13 +18,19 @@ const ActionButton = styled.div`
 `;
 
 class PlayBoard extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state={
-            gameState: ""
+            gameState: "",
+            showPopup: false
         }
     }
 
+    togglePopup = () => {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
 
     render() {
         return (
@@ -33,8 +40,9 @@ class PlayBoard extends Component {
                     gameState={this.state.gameState}
                 />
                 <ActionButton>
-                    <button 
+                    <button
                         id="play" 
+                        disabled={this.state.showPopup}
                         onClick={(e) => {
                             this.setState({
                                 gameState: e.target.id
@@ -43,16 +51,20 @@ class PlayBoard extends Component {
                     >
                         Play
                     </button>
-                    <button 
-                        id="stop" 
-                        onClick={(e) => {
-                            this.setState({
-                                gameState: e.target.id
-                            })
-                        }}
+                    <button
+                        id="stop"
+                        disabled={this.state.showPopup}
+                        onClick={this.togglePopup}
                     >
                         Stop
                     </button>
+                    {this.state.showPopup ?
+                        <Popup
+                            score={this.props.score}
+                            closePopup={this.togglePopup}
+                        />
+                        : null
+                    }
                 </ActionButton>
             </div>
         )
